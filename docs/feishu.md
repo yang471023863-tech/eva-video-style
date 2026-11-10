@@ -54,6 +54,7 @@ Wiki URLs (`/wiki/<node>`) map to a base token via
 | Document | Token | Bot access |
 |---|---|---|
 | 黄金三秒参考 1109 转存 (your copy; tables 黄金三秒参考 115 rows, 剪辑素材库 400, 黄金三秒方法论 8) | `U3FcbS0mOacHaOsbGDVcPdWGnwe` | ✅ |
+| AI 自动剪辑流程（转存 1110） (your copy of Sky盖哥's base; 01 风格总览 7, 06 开头库 170, 07 怎么选 14, 08 结尾库 23; text + links copied, attachments NOT — owner disabled download) | `B10fbZJ2Zad3snsefz6cQ3UHnEh` | ✅ |
 | 黄金三秒参考 (wiki, owner Sky盖哥, 设计日记 org; base `Le2gb4MMqanLIHsPN1mcKWTPndf`) | wiki `BrTbwcgsvixPOwkYMCSc6btZnzf` | ❌ bot · ✅ user identity |
 | AI 自动剪辑流程 (wiki, owner Sky盖哥, 设计日记 org; base `V6kKbcrC5aGY2Dsup6UctTHnnLg`; tables 风格总览/开头库/怎么选/结尾库) | wiki `Sy2HwbxG9iDlmZk2CqqcJ0H4nRc` | ❌ bot · ✅ user identity |
 
