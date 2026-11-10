@@ -33,28 +33,29 @@ node scripts/feishu.mjs api GET /open-apis/im/v1/chats
 
 To post into a group, first add the bot 「和 cc 对话」 to that group.
 
-## User identity (act as yourself) — official `@larksuite/cli`
+## User identity (act as yourself) — one click per new session
 
-User tokens are stored inside the session container, so each new cloud
-session needs one browser confirmation:
+Anything the user can open in Feishu, the user identity can read — including
+docs shared from other organizations (e.g. Sky盖哥's tables). The token lives in
+the session container (refreshes for up to 7 days), so **each new cloud session
+needs one 授权 click**:
 
 ```bash
-npm i @larksuite/cli
-npx lark-cli config init --app-id "$FEISHU_APP_ID" --app-secret-stdin <<< "$FEISHU_APP_SECRET"
-npx lark-cli auth login --recommend   # prints a link; the user opens it and confirms
-npx lark-cli auth status
+bash scripts/feishu-login.sh        # prints a link -> user opens it, clicks 授权
+bash scripts/feishu-login.sh wait   # run right after; prints userName + valid
+npx -y @larksuite/cli@1.0.98 base +table-list --as user --base-token <token>
 ```
 
-Then e.g. `lark-cli calendar +agenda`, `lark-cli im +messages-send --as user ...`.
-Access tokens last ~2h and refresh automatically for 7 days within a session.
+Wiki URLs (`/wiki/<node>`) map to a base token via
+`npx -y @larksuite/cli@1.0.98 api GET /open-apis/wiki/v2/spaces/get_node --as user --params '{"token":"<node>"}'` (field `node.obj_token`).
 
 ## Documents the bot can read (verified 2026-11-10)
 
 | Document | Token | Bot access |
 |---|---|---|
 | 黄金三秒参考 1109 转存 (your copy; tables 黄金三秒参考 115 rows, 剪辑素材库 400, 黄金三秒方法论 8) | `U3FcbS0mOacHaOsbGDVcPdWGnwe` | ✅ |
-| 黄金三秒参考 (wiki, owner Sky盖哥, 设计日记 org) | wiki `BrTbwcgsvixPOwkYMCSc6btZnzf` | ❌ only the owner can add the bot |
-| AI 自动剪辑流程 (wiki, owner Sky盖哥, 设计日记 org) | wiki `Sy2HwbxG9iDlmZk2CqqcJ0H4nRc` | ❌ only the owner can add the bot |
+| 黄金三秒参考 (wiki, owner Sky盖哥, 设计日记 org; base `Le2gb4MMqanLIHsPN1mcKWTPndf`) | wiki `BrTbwcgsvixPOwkYMCSc6btZnzf` | ❌ bot · ✅ user identity |
+| AI 自动剪辑流程 (wiki, owner Sky盖哥, 设计日记 org; base `V6kKbcrC5aGY2Dsup6UctTHnnLg`; tables 风格总览/开头库/怎么选/结尾库) | wiki `Sy2HwbxG9iDlmZk2CqqcJ0H4nRc` | ❌ bot · ✅ user identity |
 
 Bases in your own space are readable by the bot directly. For shared docs you
 only view, either ask the owner to add the app, or save a copy (转存) to your space.
