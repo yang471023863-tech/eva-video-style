@@ -47,3 +47,18 @@ npx lark-cli auth status
 
 Then e.g. `lark-cli calendar +agenda`, `lark-cli im +messages-send --as user ...`.
 Access tokens last ~2h and refresh automatically for 7 days within a session.
+
+## Documents the bot can read (verified 2026-11-10)
+
+| Document | Token | Bot access |
+|---|---|---|
+| 黄金三秒参考 1109 转存 (your copy; tables 黄金三秒参考 115 rows, 剪辑素材库 400, 黄金三秒方法论 8) | `U3FcbS0mOacHaOsbGDVcPdWGnwe` | ✅ |
+| 黄金三秒参考 (wiki, owner Sky盖哥, 设计日记 org) | wiki `BrTbwcgsvixPOwkYMCSc6btZnzf` | ❌ only the owner can add the bot |
+| AI 自动剪辑流程 (wiki, owner Sky盖哥, 设计日记 org) | wiki `Sy2HwbxG9iDlmZk2CqqcJ0H4nRc` | ❌ only the owner can add the bot |
+
+Bases in your own space are readable by the bot directly. For shared docs you
+only view, either ask the owner to add the app, or save a copy (转存) to your space.
+
+```bash
+node scripts/feishu-base-dump.mjs U3FcbS0mOacHaOsbGDVcPdWGnwe > golden3s.txt
+```
